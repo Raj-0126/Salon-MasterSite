@@ -7,15 +7,27 @@
 
 body{
     line-height:1.6;
+    background:#0b0b0b;
+    color:white;
 }
 
 nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:20px 10%;
-    background:#111;
-    color:white;
+
+    background:rgba(0,0,0,0.4);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 nav ul{
@@ -31,11 +43,9 @@ nav a{
 
 .hero{
     position: relative;
-    height:90vh;
+    height:100vh;
 
-    background:linear-gradient(rgba(0,0,0,.7),
-    rgba(0,0,0,.7)),
-    url("https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1600");
+    background:#000;
     background-size:cover;
     background-position:center;
     display:flex;
@@ -57,6 +67,57 @@ nav a{
 
     z-index:1;
 }
+.gradient-bg{
+    position:absolute;
+    width:800px;
+    height:800px;
+    border-radius:50%;
+    background:
+    radial-gradient(
+        circle,
+        rgba(212,175,55,0.25),
+        transparent 70%
+    );
+    filter:blur(80px);
+    animation:floatGlow 12s ease-in-out infinite;
+    z-index:1;
+}
+@keyframes floatGlow{
+    0%{
+        transform:
+        translate(-200px,-100px)
+        scale(1);
+    }
+    25%{
+        transform:
+        translate(200px,-50px)
+        scale(1.2);
+    }
+    50%{
+        transform:
+        translate(250px,150px)
+        scale(1);
+    }
+    75%{
+        transform:
+        translate(-150px,100px)
+        scale(1.3);
+    }
+    100%{
+        transform:
+        translate(-200px,-100px)
+        scale(1);
+    }
+}
+.second-glow{
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,255,255,0.08),
+        transparent 70%
+    );
+    animation-duration:18s;
+}
 
 .hero-content{
     position:relative;
@@ -71,15 +132,40 @@ nav a{
 .hero h1{
     font-size:3rem;
 }
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    background:#111;
+}
 
 .btn{
     display:inline-block;
+
     margin-top:20px;
-    padding:12px 25px;
+
+    padding:14px 30px;
+
     background:#d4af37;
+
     color:black;
+
     text-decoration:none;
-    border-radius:5px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
 }
 
 .services,
@@ -88,6 +174,33 @@ nav a{
 .contact{
     padding:80px 10%;
     text-align:center;
+}
+.gallery{
+    padding:80px 10%;
+}
+
+.gallery-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:300px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    transition:0.4s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.05);
 }
 
 .cards{
@@ -103,6 +216,16 @@ nav a{
     width:280px;
     box-shadow:0 0 10px rgba(0,0,0,.1);
     border-radius:10px;
+    background:#181818;
+    border:1px solid rgba(212,175,55,0.2);
+
+    transition:0.3s;
+}
+.card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 15px 40px rgba(212,175,55,0.15);
 }
 
 form{
